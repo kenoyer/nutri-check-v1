@@ -1,0 +1,46 @@
+<div data-role="view" data-title="Personal Details" data-layout="main" data-model="app.addDetails" data-show="app.addDetails.onShow">
+    <div id="addDetailsModel" class="form-view">
+        <form>
+            <ul class="form-content" data-role="listview" data-style="inset">
+                <li>
+                    <label>Name
+                        <input data-bind="value: addDetailsModel.fields.name" placeholder="John Doe" type="text">
+                    </label>
+                </li>
+                <li>
+                    <label>Age
+                        <input data-bind="value: addDetailsModel.fields.age" type="number">
+                    </label>
+                </li>
+                <li>
+                    <label>Sex
+                        <input data-bind="value: addDetailsModel.fields.sex" data-role="switch">
+                    </label>
+                </li>
+                <li>
+                    <label>Phone
+                        <input data-bind="value: addDetailsModel.fields.tel" placeholder="+123 444 555 666" type="tel">
+                    </label>
+                </li>
+                <li class="group-separator">
+                    <h4 class="group-separator-header">Doctor/Nurse</h4>
+                </li>
+                <li>
+                    <label>Name
+                        <input data-bind="value: addDetailsModel.fields.gpname" placeholder="Dr Johnson" type="text">
+                    </label>
+                </li>
+                <li>
+                    <label>Phone
+                        <input data-bind="value: addDetailsModel.fields.gptel" placeholder="+123 444 555 666" type="tel">
+                    </label>
+                </li>
+            </ul>
+
+            <div class="button-group">
+                <a data-role="button" data-bind="events: { click: addDetailsModel.cancel }">Cancel</a>
+                <a class="km-state-active" data-role="button" data-bind="events: { click: addDetailsModel.submit }">Confirm</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div data-role="view" data-title="Search" data-layout="main" data-model="app.collectFoodDetails" data-show="app.collectFoodDetails.onShow">
+    <div id="collectFoodDetailsModel" class="form-view">
+        <form>
+            <ul class="form-content" data-role="listview" data-style="inset">
+                <li>
+                    <label>Weight (kg)
+                        <input data-bind="value: collectFoodDetailsModel.fields.weight" type="number">
+                    </label>
+                </li>
+                <li>
+                    <label>Height (ft)
+                        <input data-bind="value: collectFoodDetailsModel.fields.height" placeholder="5ft9" type="text">
+                    </label>
+                </li>
+                <li>
+                    <label>Food Item
+                        <input data-bind="value: collectFoodDetailsModel.fields.foodItem" placeholder="Cheese, burger, rice e.t.c." type="text">
+                    </label>
+                </li>
+                <li>
+                    <label>Qty Consumed (g)
+                        <input data-bind="value: collectFoodDetailsModel.fields.quantity" placeholder="optional" type="text">
+                    </label>
+                </li>
+            </ul>
+
+            <div class="button-group">
+                <a data-role="button" data-bind="events: { click: collectFoodDetailsModel.cancel }">Cancel</a>
+                <a class="km-state-active" data-role="button" data-bind="events: { click: collectFoodDetailsModel.submit }">Go</a>
+            </div>
+        </form>
+    </div>
+</div>
