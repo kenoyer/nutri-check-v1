@@ -128,7 +128,8 @@
       ],
       "name": "addDetails",
       "title": "Add Personal Details",
-      "addToNavigation": false
+      "addToNavigation": true,
+      "icon": "home"
     },
     {
       "type": "view",
