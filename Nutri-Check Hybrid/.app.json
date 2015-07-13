@@ -128,8 +128,7 @@
       ],
       "name": "addDetails",
       "title": "Add Personal Details",
-      "addToNavigation": true,
-      "icon": "home"
+      "addToNavigation": false
     },
     {
       "type": "view",
@@ -153,6 +152,13 @@
       "title": "About",
       "addToNavigation": true,
       "icon": "info"
+    },
+    {
+      "type": "view",
+      "components": [],
+      "name": "report",
+      "title": "Report",
+      "addToNavigation": false
     }
   ],
   "dataProviders": [],
