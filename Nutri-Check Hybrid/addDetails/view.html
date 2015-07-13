@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Personal Details" data-layout="main" data-model="app.addDetails" data-show="app.addDetails.onShow">
+<div data-role="view" data-title="Add Personal Details" data-layout="main-nonav" data-model="app.addDetails" data-show="app.addDetails.onShow">
     <div id="addDetailsModel" class="form-view">
         <form>
             <ul class="form-content" data-role="listview" data-style="inset">
@@ -33,6 +33,11 @@
                 <li>
                     <label>Phone
                         <input data-bind="value: addDetailsModel.fields.gptel" placeholder="+123 444 555 666" type="tel">
+                    </label>
+                </li>
+                <li>
+                    <label>Address
+                        <input data-bind="value: addDetailsModel.fields.address" placeholder="johndoe" type="text">
                     </label>
                 </li>
             </ul>

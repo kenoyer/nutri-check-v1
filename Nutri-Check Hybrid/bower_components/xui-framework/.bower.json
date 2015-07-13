@@ -1,0 +1,42 @@
+{
+  "name": "xui-framework",
+  "homepage": "https://github.com/SplitmediaLabsLimited/xui",
+  "authors": [
+    "xui@splitmedialabs.com"
+  ],
+  "description": "XSplit plugin framework",
+  "main": [
+    "dist/xui.js",
+    "dist/xui.d.ts",
+    "dist/internal.d.ts"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SplitmediaLabsLimited/xui.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "docs",
+    "examples",
+    "lib",
+    "src",
+    "*.*"
+  ],
+  "dependencies": {
+    "es6-promise.d": "https://raw.githubusercontent.com/borisyankov/DefinitelyTyped/master/es6-promise/es6-promise.d.ts"
+  },
+  "_release": "dda9c8e986",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "dda9c8e9860d2f647ef8e4c8084a841de467f388"
+  },
+  "_source": "git://github.com/splitmedialabslimited/xui.git",
+  "_target": "*",
+  "_originalSource": "xui-framework",
+  "_direct": true
+}

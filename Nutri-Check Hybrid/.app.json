@@ -55,26 +55,11 @@
     },
     {
       "type": "view",
-      "components": [
-        {
-          "type": "about",
-          "name": "aboutViewModel",
-          "appName": "Nutri-Check",
-          "appVersion": "Version 1",
-          "appDescription": "The application takes input in the form of “the name of the food item and quantity” consumed by the user either via manual text entry or by voice. The food item is checked with a centralized nutrition database over the Internet that has calorific values for a large number of food items as well as nutritional values of each food item. The application provides the amount of calories consumed with nutrition-wise split of the food consumed. Your application offers a nutrition check report and offers some recommended advice supported by medical references.\n\nDeveloped by Kenoye R.",
-          "contactButton": true,
-          "contactLabel": "Contact developer",
-          "contactMail": "kenoyelive@live.com",
-          "facebookButton": false,
-          "twitterButton": true,
-          "twitterLabel": "Follow us on Twitter",
-          "twitterLink": "https://twitter.com/kenomobilebloke"
-        }
-      ],
-      "name": "aboutView",
-      "title": "About",
+      "components": [],
+      "name": "viewDetails",
+      "title": "Personal Details",
       "addToNavigation": true,
-      "icon": "info"
+      "icon": "contacts"
     },
     {
       "type": "view",
@@ -127,6 +112,13 @@
               "title": "Phone",
               "inputType": "tel",
               "placeholder": "+123 444 555 666"
+            },
+            {
+              "type": "field",
+              "name": "address",
+              "title": "Address",
+              "inputType": "text",
+              "placeholder": "johndoe"
             }
           ],
           "name": "addDetailsModel",
@@ -135,9 +127,31 @@
         }
       ],
       "name": "addDetails",
-      "title": "Personal Details",
+      "title": "Add Personal Details",
+      "addToNavigation": false
+    },
+    {
+      "type": "view",
+      "components": [
+        {
+          "type": "about",
+          "name": "aboutViewModel",
+          "appName": "Nutri-Check",
+          "appVersion": "Version 1",
+          "appDescription": "The application takes input in the form of “the name of the food item and quantity” consumed by the user either via manual text entry or by voice. The food item is checked with a centralized nutrition database over the Internet that has calorific values for a large number of food items as well as nutritional values of each food item. The application provides the amount of calories consumed with nutrition-wise split of the food consumed. Your application offers a nutrition check report and offers some recommended advice supported by medical references.\n\nDeveloped by Kenoye R.",
+          "contactButton": true,
+          "contactLabel": "Contact developer",
+          "contactMail": "kenoyelive@live.com",
+          "facebookButton": false,
+          "twitterButton": true,
+          "twitterLabel": "Follow on Twitter",
+          "twitterLink": "https://twitter.com/kenomobilebloke"
+        }
+      ],
+      "name": "aboutView",
+      "title": "About",
       "addToNavigation": true,
-      "icon": "bookmarks"
+      "icon": "info"
     }
   ],
   "dataProviders": [],

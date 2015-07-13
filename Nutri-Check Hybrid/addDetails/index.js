@@ -6,6 +6,7 @@ app.addDetails = kendo.observable({
 (function(parent) {
     var addDetailsModel = kendo.observable({
         fields: {
+            address: '',
             gptel: '',
             gpname: '',
             group: '',
