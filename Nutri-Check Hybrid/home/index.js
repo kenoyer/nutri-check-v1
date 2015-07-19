@@ -1,5 +1,6 @@
-'use strict';
+//'use strict';
 
 app.home = kendo.observable({
-    onShow: function() {}
+    onShow: function () {
+    }
 });

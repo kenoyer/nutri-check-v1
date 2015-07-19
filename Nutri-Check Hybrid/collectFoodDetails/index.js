@@ -2,19 +2,20 @@
 
 app.collectFoodDetails = kendo.observable({
     onShow: function () {
-        
+
     }
 });
 
-    var xmlhttp = new XMLHttpRequest();
-    var xmlhttp2 = new XMLHttpRequest();
+var xmlhttp = new XMLHttpRequest();
+var xmlhttp2 = new XMLHttpRequest();
 
-app.search = function () {
+app.search = function (query) {
 
+    var url = 'https://api.nutritionix.com/v1_1/search/' + query + '?results=0%3A5&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=63bf4be1&appKey=0a46e4d09a00eeb6d90909be80d96efa';
 
 
     //var url = "https://api.nutritionix.com/v1_1/search/burger?results=0%3A5&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=63bf4be1&appKey=0a46e4d09a00eeb6d90909be80d96efa";
-    var url = "https://api.nutritionix.com/v1_1/search/";
+    //var url = "https://api.nutritionix.com/v1_1/search/";
 
 
     xmlhttp.onreadystatechange = function () {
@@ -25,9 +26,10 @@ app.search = function () {
 
 
 
-    xmlhttp.open("POST", url, true);
-    xmlhttp.setRequestHeader("Content-type", "application/json");
-    xmlhttp.send('{"appId":"63bf4be1", "appKey":"0a46e4d09a00eeb6d90909be80d96efa", "query":"burger"}');
+    xmlhttp.open("GET", url, true);
+    //xmlhttp.setRequestHeader("Content-type", "application/json");
+    //xmlhttp.send('{"appId":"63bf4be1", "appKey":"0a46e4d09a00eeb6d90909be80d96efa", "query":"burger"}');
+    xmlhttp.send();
 
     function myFunction(response) {
         var arr = JSON.parse(response);
@@ -41,7 +43,7 @@ app.search = function () {
 
         out += "</table>";
 
-        document.getElementById("id01").innerHTML = out;
+        //document.getElementById("id01").innerHTML = out;
         app.getItem(arr.hits[0]._id);
     }
 
@@ -64,23 +66,31 @@ xmlhttp2.onreadystatechange = function () {
     }
 }
 
+var calo = '';
 function myFunction2(response) {
     var arr2 = JSON.parse(response);
-    console.log("got this object "+arr2);
+    console.log("got this object " + arr2);
     var i;
-    var out = "<table>";
-
-    out += "<tr><td>" +
-        arr2.item_name +
-        "</td><td>" +
-        arr2.nf_calories +
-        "</td></tr>";
-
-    out += "</table>";
-    document.getElementById("id03").innerHTML = out;
+   
+    calo = arr2.nf_calories;
+    var out = "<label>You consumed " + arr2.item_name +" containing "+ calo +" Calories</label>";
+    document.getElementById("cal").innerHTML = out;
+    recomendation(calo);
 }
 
+var bmi = '';
+function getBMI(height, weight) {
+    var h = height;
+    var hm2 = Math.pow(h, 2) * 0.0929;
+    bmi = weight / hm2;    
+    bmi = bmi.toFixed(1);
+    var out = "<label>Your Body Mass Index (BMI) is "+ bmi +"</label>";
+    document.getElementById("bmi").innerHTML = out;
+}
 
+function recomendation(calo){
+    console.log(calo+" | "+ bmi );
+}
 
 (function (parent) {
     var collectFoodDetailsModel = kendo.observable({
@@ -91,7 +101,12 @@ function myFunction2(response) {
             weight: '',
         },
         submit: function () {
-            app.search();
+            var query = document.getElementById("foodItem").value;
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+            getBMI(height, weight);
+            app.search(query);
+            
         },
         cancel: function () {}
     });

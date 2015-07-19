@@ -1,25 +1,30 @@
-<div data-role="view" data-title="Add Personal Details" data-layout="main-nonav" data-model="app.addDetails" data-show="app.addDetails.onShow">
+<div data-role="view" data-title="Add Details" data-layout="main" data-model="app.addDetails" data-show="app.addDetails.onShow">
     <div id="addDetailsModel" class="form-view">
         <form>
             <ul class="form-content" data-role="listview" data-style="inset">
                 <li>
                     <label>Name
-                        <input data-bind="value: addDetailsModel.fields.name" placeholder="John Doe" type="text">
+                        <input id="name" placeholder="John Doe" type="text">
                     </label>
                 </li>
                 <li>
                     <label>Age
-                        <input data-bind="value: addDetailsModel.fields.age" type="number">
+                        <input id="age" type="number">
                     </label>
                 </li>
                 <li>
                     <label>Sex
-                        <input data-bind="value: addDetailsModel.fields.sex" data-role="switch">
+                        <input id="sex" placeholder="male/female" type="text">
                     </label>
                 </li>
                 <li>
                     <label>Phone
-                        <input data-bind="value: addDetailsModel.fields.tel" placeholder="+123 444 555 666" type="tel">
+                        <input id="tel" placeholder="+123 444 555 666" type="tel">
+                    </label>
+                </li>
+                <li>
+                    <label>Address
+                        <input id="address" type="text">
                     </label>
                 </li>
                 <li class="group-separator">
@@ -27,17 +32,12 @@
                 </li>
                 <li>
                     <label>Name
-                        <input data-bind="value: addDetailsModel.fields.gpname" placeholder="Dr Johnson" type="text">
+                        <input id="gpname" placeholder="Dr Johnson" type="text">
                     </label>
                 </li>
                 <li>
                     <label>Phone
-                        <input data-bind="value: addDetailsModel.fields.gptel" placeholder="+123 444 555 666" type="tel">
-                    </label>
-                </li>
-                <li>
-                    <label>Address
-                        <input data-bind="value: addDetailsModel.fields.address" placeholder="johndoe" type="text">
+                        <input id="gptel" placeholder="+123 444 555 666" type="tel">
                     </label>
                 </li>
             </ul>

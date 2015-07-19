@@ -14,6 +14,7 @@
     <script src="bower_components/kendo-ui-appbuilder-core/js/kendo.mobile.min.js"></script>
     <script src="bower_components/everlive/min/everlive.all.min.js"></script>
     <script src="lib/progress/progress.all.min.js"></script>
+    <script src="//www.parsecdn.com/js/parse-1.5.0.min.js"></script>
     <script src="app.js"></script>
 </head>
 
@@ -23,6 +24,28 @@
             <div data-role="navbar">
                 <span data-role="view-title"></span>
                 <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+            </div>
+        </header>
+
+        <!-- application views will be rendered here -->
+    </div>   
+    
+    <div data-role="layout" data-id="edit">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+                <a data-role="button" href="#edit" data-rel="editDetails" data-align="right">Edit</a>
+            </div>
+        </header>
+
+        <!-- application views will be rendered here -->
+    </div>
+    
+    <div data-role="layout" data-id="save">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+                <a data-role="button" href="#save" data-align="right">Save</a>
             </div>
         </header>
 
