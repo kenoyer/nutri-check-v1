@@ -12,15 +12,7 @@ app.viewDetails = kendo.observable({
 
         var db = app.db;
         if (app.checkOpenedDatabase()) {
-            var exists = app.tableExists();
-            if (exists == true) {
-                console.log("table exists:" + exists);
-                app.readRecords();
-                console.log("read records");
-            } else {
-                //console.log("table exists:" + app.tableExists);
-                window.app.mobileApp.navigate('addDetails/view.html');
-            }
+            app.tableExists();
         } else {
             console.log("no open db");
 
@@ -33,26 +25,32 @@ app.viewDetails = kendo.observable({
 });
 
 
-        var exists = "false";
+var exists = "false";
 
 app.tableExists = function () {
-        var db = app.db;
-        db.transaction(function (tx) {
-            tx.executeSql(
-                "SELECT * FROM sqlite_master WHERE name = 'details' and type= 'table'", [],
-                function (tx, res) {
-                    console.log("table found in db");
-                    exists = "true";
-                    return exists;
-                },
-                function (tx, res) {
-                    console.log("table NOT found in db");
-                    exists = "false";
-                    return exists;
+    var db = app.db;
+    db.transaction(function (tx) {
+        tx.executeSql(
+            "SELECT name FROM sqlite_master WHERE name = 'details' and type= 'table'", [],
+            function (tx, res) {
+                var dataLength = res.rows.length;
+                console.log(dataLength);
+                if (dataLength > 0) {
+
+                    console.log("table exists:" + exists);
+                    app.readRecords();
+                    console.log("read records");
+                } else {
+                    console.log("No no table found");
+                    window.app.mobileApp.navigate('addDetails/view.html');
                 }
-            );
-        });
-    }
+            },
+            function (tx, res) {
+                console.log("some error retrieving data");
+            }
+        );
+    });
+}
 
 function dropTable() {
     var db = app.db;
@@ -129,6 +127,36 @@ app.readRecords = function () {
         return true;
     }
 
+app.fillForm = function () {
+    var db = app.db;
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT * FROM 'details'", [],
+            function (tx, res) {
+                for (var i = 0; i < res.rows.length; i++) {
+                    var row = res.rows.item(i);
+                    var name = row.name;
+                    var age = row.age;
+                    var sex = row.sex;
+                    var tel = row.tel;
+                    var address = row.address;
+                    var gpname = row.gpname;
+                    var gptel = row.gptel;
+                }
+                document.getElementById("name").value = name;
+                document.getElementById("age").value = age;
+                document.getElementById("sex").value = sex;
+                document.getElementById("tel").value = tel;
+                document.getElementById("address").value = address;
+                document.getElementById("gpname").value = gpname;
+                document.getElementById("gptel").value = gptel;
+
+            },
+            function (tx, res) {
+                console.log('No details to fill form with. Error msg: ' + res.message);
+            });
+    });
+}
+
 app.onError = function (tx, e) {
     console.log("Error: " + e.message);
 }
@@ -136,4 +164,3 @@ app.onError = function (tx, e) {
 app.onSuccess = function (tx, r) {
     console.log("onSuccess");
 }
-

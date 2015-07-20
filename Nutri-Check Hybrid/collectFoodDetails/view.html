@@ -4,33 +4,42 @@
             <ul class="form-content" data-role="listview" data-style="inset">
                 <li>
                     <label>Weight (kg)
-                        <input id="weight" type="number">
+                        <input data-bind="value: collectFoodDetailsModel.fields.weight" type="number">
                     </label>
                 </li>
                 <li>
                     <label>Height (ft)
-                        <input id="height" placeholder="5" type="text">
+                        <input data-bind="value: collectFoodDetailsModel.fields.height" placeholder="5ft9" type="text">
                     </label>
                 </li>
                 <li>
                     <label>Food Item
-                        <input id="foodItem" placeholder="Cheese, burger, rice e.t.c." type="text">
+                        <input data-bind="value: collectFoodDetailsModel.fields.foodItem" placeholder="Cheese, burger, rice e.t.c." type="text">
                     </label>
                 </li>
                 <li>
                     <label>Qty Consumed (g)
-                        <input id="quantity" placeholder="optional" type="text">
+                        <input data-bind="value: collectFoodDetailsModel.fields.quantity" placeholder="optional" type="text">
+                    </label>
+                </li>
+                <li>
+                    <label>Exercise/Activity Level
+                        <select data-bind="value: collectFoodDetailsModel.fields.exerciseLevel" data-role="dropdownlist">
+                            <option value="First Option">First Option</option>
+                            <option value="Second Option">Second Option</option>
+                            <option value="Third Option">Third Option</option>
+                            <option value="Fourth Option">Fourth Option</option>
+                            <option value="First Option">Fifth Option</option>
+                            <option value="Sixth Option">Sixth Option</option>
+                        </select>
                     </label>
                 </li>
             </ul>
+
             <div class="button-group">
                 <a data-role="button" data-bind="events: { click: collectFoodDetailsModel.cancel }">Cancel</a>
                 <a class="km-state-active" data-role="button" data-bind="events: { click: collectFoodDetailsModel.submit }">Go</a>
             </div>
         </form>
-        <ul class="form-content" data-role="listview">
-            <li id="bmi"></li>
-            <li id="cal"></li>
-        </ul>
     </div>
 </div>

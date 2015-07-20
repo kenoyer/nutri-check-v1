@@ -41,6 +41,12 @@
               "title": "Qty Consumed (g)",
               "inputType": "text",
               "placeholder": "optional"
+            },
+            {
+              "type": "field",
+              "name": "exerciseLevel",
+              "title": "Exercise/Activity Level",
+              "inputType": "dropdownlist"
             }
           ],
           "name": "collectFoodDetailsModel",

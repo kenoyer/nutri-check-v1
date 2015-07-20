@@ -6,10 +6,8 @@
     <meta charset="utf-8">
     <link href="bower_components/kendo-ui-appbuilder-core/styles/kendo.mobile.all.min.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
-
     <!-- cordova script (this will be a 404 during development if served with `grunt serve`) -->
     <script src="cordova.js"></script>
-
     <script src="bower_components/kendo-ui-appbuilder-core/js/jquery.min.js"></script>
     <script src="bower_components/kendo-ui-appbuilder-core/js/kendo.mobile.min.js"></script>
     <script src="bower_components/everlive/min/everlive.all.min.js"></script>
@@ -26,21 +24,18 @@
                 <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
             </div>
         </header>
-
         <!-- application views will be rendered here -->
-    </div>   
-    
+    </div>
     <div data-role="layout" data-id="edit">
         <header data-role="header">
             <div data-role="navbar">
                 <span data-role="view-title"></span>
-                <a data-role="button" href="#edit" data-rel="editDetails" data-align="right">Edit</a>
+                <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+                <a data-role="button" href="addDetails/view.html" data-rel="editDetails" data-align="right">Edit</a>
             </div>
         </header>
-
         <!-- application views will be rendered here -->
     </div>
-    
     <div data-role="layout" data-id="save">
         <header data-role="header">
             <div data-role="navbar">
@@ -48,20 +43,16 @@
                 <a data-role="button" href="#save" data-align="right">Save</a>
             </div>
         </header>
-
         <!-- application views will be rendered here -->
     </div>
-
     <div data-role="layout" data-id="main-nonav">
         <header data-role="header">
             <div data-role="navbar">
                 <span data-role="view-title"></span>
             </div>
         </header>
-
         <!-- application views will be rendered here -->
     </div>
-
     <div id="appDrawer" data-role="drawer" data-title="Navigation">
         <header data-role="header">
             <div data-role="navbar">

@@ -3,24 +3,13 @@
 app.addDetails = kendo.observable({
     onShow: function () {
 
-        var app = {};
         //window.display();
+        app.fillForm();
 
 
     }
 });
 
-
-
-
-app.submitform = function () {
-    //app.createTable();
-    console.log("worked");
-
-    app.mobileApp.navigate('#:back');
-};
-
-app.cancelform = function () {};
 
 (function (parent) {
     var addDetailsModel = kendo.observable({
@@ -46,7 +35,6 @@ app.cancelform = function () {};
 
             //app.createTable();
             app.insert(name, age, sex, tel, address, gpname, gptel);
-            app.tableExists = 'true';
             app.mobileApp.navigate('collectFoodDetails/view.html');
         },
         cancel: function () {}
