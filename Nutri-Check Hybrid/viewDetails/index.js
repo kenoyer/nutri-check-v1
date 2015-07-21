@@ -118,6 +118,13 @@ app.readRecords = function () {
         var cal = calo;
         var ideal_cal;
         var BMR;
+
+        var gptel;
+        var gpname;
+        var sex;
+        var user_name;
+        var age;
+        var sms_msg = '';
         //var gptel
         var db = app.db;
         db.transaction(function (tx) {
@@ -125,9 +132,11 @@ app.readRecords = function () {
                 function (tx, res) {
                     for (var i = 0; i < res.rows.length; i++) {
                         var row = res.rows.item(i);
-                        var gptel = row.gptel;
-                        var sex = row.sex;
-                        var age = row.age;
+                        gptel = row.gptel;
+                        gpname = row.gpname;
+                        sex = row.sex;
+                        user_name = row.name;
+                        age = row.age;
                     }
 
                     if (sex == 'male') {
@@ -140,7 +149,9 @@ app.readRecords = function () {
                             console.log("You've had a bit more than you should be having at a go");
                         } else
                         if (cal > BMR) {
-                            console.log("SMS Dr");
+                            sms_msg = 'Hello Dr. ' + gpname + ', ' + user_name + ' has just consumed an alarming ' + cal + 'Cal. Their BMR is ' + BMR + '| Ideal Cal is ' + ideal_cal + '.';
+                            app.smsDr(gptel, sms_msg);
+                            console.log(sms_msg);
                         }
                         console.log("BMR is " + BMR + " | Ideal Cal is " + ideal_cal + " | You consumed " + cal + "Cal");
                     } else
@@ -149,16 +160,17 @@ app.readRecords = function () {
                         ideal_cal = BMR / 3;
                         if (cal <= ideal_cal) {
                             console.log("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
+
                         } else
                         if (cal > ideal_cal && cal < BMR) {
                             console.log("You've had a bit more than you should be having at a go");
                         } else
                         if (cal > BMR) {
-                            
-                            console.log("SMS Dr");
+                            sms_msg = 'Hello Dr. ' + gpname + ', ' + user_name + ' has just consumed an alarming ' + cal + 'Cal. Their BMR is ' + BMR + '| Ideal Cal is ' + ideal_cal + '.';
+                            app.smsDr(gptel, sms_msg);
+                            console.log(sms_msg);
                         }
                         console.log("BMR is " + BMR + " | Ideal Cal is " + ideal_cal + " | You consumed " + cal + "Cal");
-
 
                     }
                     //document.getElementById("listDetails").innerHTML = output;
@@ -173,6 +185,28 @@ app.readRecords = function () {
     }
 
 
+app.smsDr = function (gptel, msg) {
+    var number = gptel;
+    var message = msg;
+    alert("Sending message to your Doctor on " + number);
+    alert(message);
+
+    //CONFIGURATION
+    var options = {
+        android: {
+            intent: '' // send SMS with the native android SMS messaging
+                //intent: '' // send SMS without open any other app
+        }
+    };
+
+    var success = function () {
+        alert('Message sent successfully');
+    };
+    var error = function (e) {
+        alert('Message Failed:' + e);
+    };
+    sms.send(number, message, options, success, error);
+}
 
 app.checkOpenedDatabase = function () {
     if (app.db == null) {
