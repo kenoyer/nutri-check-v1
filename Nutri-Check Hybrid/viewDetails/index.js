@@ -12,7 +12,7 @@ app.viewDetails = kendo.observable({
 
         var db = app.db;
         if (app.checkOpenedDatabase()) {
-            app.tableExists();
+            tableExists();
         } else {
             console.log("no open db");
 
@@ -25,9 +25,7 @@ app.viewDetails = kendo.observable({
 });
 
 
-var exists = "false";
-
-app.tableExists = function () {
+function tableExists () {
     var db = app.db;
     db.transaction(function (tx) {
         tx.executeSql(
@@ -37,7 +35,7 @@ app.tableExists = function () {
                 console.log(dataLength);
                 if (dataLength > 0) {
 
-                    console.log("table exists:" + exists);
+                    console.log("table exists");
                     app.readRecords();
                     console.log("read records");
                 } else {
