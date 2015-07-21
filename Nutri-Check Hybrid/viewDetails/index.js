@@ -25,7 +25,7 @@ app.viewDetails = kendo.observable({
 });
 
 
-function tableExists () {
+function tableExists() {
     var db = app.db;
     db.transaction(function (tx) {
         tx.executeSql(
@@ -111,19 +111,80 @@ app.readRecords = function () {
         });
     },
 
+    app.get_report = function (we, he, el, calo) {
+        var w = we;
+        var h = he * 100;
+        var el = el;
+        var cal = calo;
+        var ideal_cal;
+        var BMR;
+        //var gptel
+        var db = app.db;
+        db.transaction(function (tx) {
+            tx.executeSql("SELECT * FROM 'details'", [],
+                function (tx, res) {
+                    for (var i = 0; i < res.rows.length; i++) {
+                        var row = res.rows.item(i);
+                        var gptel = row.gptel;
+                        var sex = row.sex;
+                        var age = row.age;
+                    }
+
+                    if (sex == 'male') {
+                        BMR = (10 * w + 6.25 * h - 5 * age + 5) * el;
+                        ideal_cal = BMR / 3;
+                        if (cal <= ideal_cal) {
+                            console.log("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
+                        } else
+                        if (cal > ideal_cal && cal < BMR) {
+                            console.log("You've had a bit more than you should be having at a go");
+                        } else
+                        if (cal > BMR) {
+                            console.log("SMS Dr");
+                        }
+                        console.log("BMR is " + BMR + " | Ideal Cal is " + ideal_cal + " | You consumed " + cal + "Cal");
+                    } else
+                    if (sex == 'female') {
+                        BMR = (10 * w + 6.25 * h - 5 * age - 161) * el;
+                        ideal_cal = BMR / 3;
+                        if (cal <= ideal_cal) {
+                            console.log("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
+                        } else
+                        if (cal > ideal_cal && cal < BMR) {
+                            console.log("You've had a bit more than you should be having at a go");
+                        } else
+                        if (cal > BMR) {
+                            
+                            console.log("SMS Dr");
+                        }
+                        console.log("BMR is " + BMR + " | Ideal Cal is " + ideal_cal + " | You consumed " + cal + "Cal");
 
 
-    app.checkOpenedDatabase = function () {
-        if (app.db == null) {
-            // wrapping in a timeout so the button doesn't stay in 'pressed' state
-            setTimeout(function () {
-                alert("open the database first");
-            });
-            return false;
-        }
+                    }
+                    //document.getElementById("listDetails").innerHTML = output;
+                },
 
-        return true;
+                function (tx, res) {
+                    console.log('no gptel retrieved error: ');
+                    //return false;
+                });
+        });
+
     }
+
+
+
+app.checkOpenedDatabase = function () {
+    if (app.db == null) {
+        // wrapping in a timeout so the button doesn't stay in 'pressed' state
+        setTimeout(function () {
+            alert("open the database first");
+        });
+        return false;
+    }
+
+    return true;
+}
 
 app.fillForm = function () {
     var db = app.db;
