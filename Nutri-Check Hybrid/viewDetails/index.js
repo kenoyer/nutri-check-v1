@@ -144,8 +144,10 @@ app.readRecords = function () {
                         ideal_cal = BMR / 3;
                         if (cal <= ideal_cal) {
                             console.log("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
+                            alert("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
                         } else
                         if (cal > ideal_cal && cal < BMR) {
+                            alert("You've had a bit more than you should be having at a go");
                             console.log("You've had a bit more than you should be having at a go");
                         } else
                         if (cal > BMR) {
@@ -158,15 +160,16 @@ app.readRecords = function () {
                     if (sex == 'female') {
                         BMR = (10 * w + 6.25 * h - 5 * age - 161) * el;
                         ideal_cal = BMR / 3;
-                        if (cal <= ideal_cal) {
+                       if (cal <= ideal_cal) {
                             console.log("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
-
+                            alert("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
                         } else
                         if (cal > ideal_cal && cal < BMR) {
+                            alert("You've had a bit more than you should be having at a go");
                             console.log("You've had a bit more than you should be having at a go");
                         } else
                         if (cal > BMR) {
-                            sms_msg = 'Hello Dr. ' + gpname + ', ' + user_name + ' has just consumed an alarming ' + cal + 'Cal. Their BMR is ' + BMR + '| Ideal Cal is ' + ideal_cal + '.';
+                            sms_msg = 'Hello Dr. ' + gpname + ', ' + user_name + ' has just consumed an alarming ' + cal + 'Cal. Their BMR is ' + BMR + ' and ideal calorie per meal is ' + ideal_cal + '.';
                             app.smsDr(gptel, sms_msg);
                             console.log(sms_msg);
                         }
