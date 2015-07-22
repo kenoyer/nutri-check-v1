@@ -4,27 +4,27 @@
             <ul class="form-content" data-role="listview" data-style="inset">
                 <li>
                     <label>Weight (kg)
-                        <input data-bind="value: collectFoodDetailsModel.fields.weight" type="number">
+                        <input id="weight" placeholder="78" type="number">
                     </label>
                 </li>
                 <li>
-                    <label>Height (ft)
-                        <input data-bind="value: collectFoodDetailsModel.fields.height" placeholder="5ft9" type="text">
+                    <label>Height (m)
+                        <input id="height" placeholder="1.84" type="text">
                     </label>
                 </li>
                 <li>
                     <label>Food Item
-                        <input data-bind="value: collectFoodDetailsModel.fields.foodItem" placeholder="Cheese, burger, rice e.t.c." type="text">
+                        <input id="foodItem" placeholder="Cheese, burger, rice e.t.c." type="text">
                     </label>
                 </li>
                 <li>
                     <label>Qty Consumed (g)
-                        <input data-bind="value: collectFoodDetailsModel.fields.quantity" placeholder="optional" type="text">
+                        <input id="quantity" placeholder="optional" type="text">
                     </label>
                 </li>
                 <li>
-                    <label>Exercise/Activity Level
-                        <select data-bind="value: collectFoodDetailsModel.fields.exerciseLevel" data-role="dropdownlist">
+                    <label>Exercise/Activity
+                        <select id="exerciseLevel" data-role="dropdownlist">
                             <option value="1.2">Sedentary: Little to no regular exercise</option>
                             <option value="1.375">Mild activity: Intensive exercise for at least 20 minutes 1 to 3 times per week.</option>
                             <option value="1.55">Moderate activity: Intensive exercise for at least 30 to 60 minutes 3 to 4 times per week.</option>
@@ -40,5 +40,15 @@
                 <a class="km-state-active" data-role="button" data-bind="events: { click: collectFoodDetailsModel.submit }">Go</a>
             </div>
         </form>
+        
+        <ul class="form-content" data-role="listview" data-style="inset">
+            <li id="cal">
+                
+            </li>
+            <li id="report">
+                
+            </li>
+            
+        </ul>
     </div>
 </div>
