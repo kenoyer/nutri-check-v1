@@ -2,11 +2,7 @@
 
 app.addDetails = kendo.observable({
     onShow: function () {
-
-        //window.display();
         app.fillForm();
-
-
     }
 });
 
@@ -33,7 +29,6 @@ app.addDetails = kendo.observable({
             var gpname = document.getElementById("gpname").value;
             var gptel = document.getElementById("gptel").value;
 
-            //app.createTable();
             app.insert(name, age, sex, tel, address, gpname, gptel);
             app.mobileApp.navigate('collectFoodDetails/view.html');
         },

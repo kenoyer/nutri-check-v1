@@ -4,12 +4,6 @@
 app.viewDetails = kendo.observable({
     onShow: function () {
 
-        //if table already exist then entry exist 
-        //app.db = null;
-
-
-
-
         var db = app.db;
         if (app.checkOpenedDatabase()) {
             tableExists();
@@ -111,12 +105,11 @@ app.readRecords = function () {
         });
     },
 
-    app.get_report = function (we, he, el, calo, foodName) {
+    app.get_report = function (we, he, el, calo) {
         var w = we;
         var h = he * 100;
         var el = el;
         var cal = calo;
-        var food = foodName;
         var ideal_cal;
         var BMR;
 
@@ -146,44 +139,47 @@ app.readRecords = function () {
                         if (cal <= ideal_cal) {
                             console.log("It's okay to have this but remember your daily cal need (BMR) is " + BMR);
                             alert("It's okay to have this but remember your daily cal need (BMR) is " + BMR);
-                             document.getElementById("report").innerHTML = "It's okay to have this but remember your daily cal need (BMR) is " + BMR;
+                            document.getElementById("report").innerHTML = "It's okay to have this but remember your daily cal need (BMR) is " + BMR;
                         } else
                         if (cal > ideal_cal && cal < BMR) {
                             document.getElementById("report").innerHTML = "You've had a bit more than you should be having at a go";
+                            alert("You've had a bit more than you should be having at a go");
                             console.log("You've had a bit more than you should be having at a go");
                         } else
                         if (cal > BMR) {
-                            sms_msg = 'Hello Dr. ' + gpname + ', ' + user_name + ' has just consumed an alarming ' + cal + 'calorie this. Their BMR is ' + BMR + ' | Ideal calorie intake at a go is ' + ideal_cal + '.';
+                            sms_msg = 'Hello Dr. ' + gpname + ', ' + user_name + ' has just consumed an alarming ' + cal + 'cal. His BMR is ' + BMR + ' and ideal calorie intake per meal ' + ideal_cal + '.';
                             app.smsDr(gptel, sms_msg);
                             console.log(sms_msg);
+                            document.getElementById("report").innerHTML = sms_msg;
                         }
                         console.log("BMR is " + BMR + " | Ideal Cal is " + ideal_cal);
                     } else
                     if (sex == 'female') {
                         BMR = (10 * w + 6.25 * h - 5 * age - 161) * el;
                         ideal_cal = BMR / 3;
-                       if (cal <= ideal_cal) {
+                        if (cal <= ideal_cal) {
                             console.log("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
+                            alert("It's okay to eat this but remember your daily cal need (BMR) is " + BMR);
                             document.getElementById("report").innerHTML = "It's okay to eat this but remember your daily cal need (BMR) is " + BMR;
                         } else
                         if (cal > ideal_cal && cal < BMR) {
                             document.getElementById("report").innerHTML = "You've had a bit more than you should be having at a go";
                             console.log("You've had a bit more than you should be having at a go");
+                            alert("You've had a bit more than you should be having at a go");
                         } else
                         if (cal > BMR) {
-                            sms_msg = 'Hello Dr. ' + gpname + ', ' + user_name + ' has just consumed an alarming ' + cal + 'calorie this. Their BMR is ' + BMR + ' | Ideal calorie intake at a go is ' + ideal_cal + '.';
+                            sms_msg = 'Hello Dr. ' + gpname + ', ' + user_name + ' has just consumed an alarming ' + cal + 'cal. Her BMR is ' + BMR + ' and ideal calorie intake per meal is ' + ideal_cal + '.';
                             app.smsDr(gptel, sms_msg);
+                            document.getElementById("report").innerHTML = sms_msg;
                             console.log(sms_msg);
                         }
                         console.log("BMR is " + BMR + " | Ideal Cal is " + ideal_cal);
 
                     }
-                    //document.getElementById("listDetails").innerHTML = output;
                 },
 
                 function (tx, res) {
                     console.log('no gptel retrieved error: ');
-                    //return false;
                 });
         });
 

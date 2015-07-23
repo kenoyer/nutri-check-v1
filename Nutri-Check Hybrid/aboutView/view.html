@@ -1,21 +1,21 @@
 <div data-role="view" data-title="About" data-layout="main" data-model="app.aboutView" data-show="app.aboutView.onShow">
     <div class="about-view" data-bind="invisible:error">
         <div class="icon-group">
-
-
             <div class="app-details">
-                <h2>Nutri-Check</h2>
-                <h4>Version 1</h4>
+                <h2>NutriCheck v1</h2>
+                <h4>Developed by Kenoye R.</h4>
             </div>
         </div>
-
-        <p>The application takes input in the form of “the name of the food item and quantity” consumed by the user either via manual text entry or by voice. The food item is checked with a centralized nutrition database over the Internet that has calorific
-            values for a large number of food items as well as nutritional values of each food item. The application provides the amount of calories consumed with nutrition-wise split of the food consumed. Your application offers a nutrition check report
-            and offers some recommended advice supported by medical references. Developed by Kenoye R.</p>
-
+        <p>
+            NutriCheck is a very simple app to use but has certain requirements in other for the report to be generated.
+        </p>
+        <p>
+            Very important is that you fill out your personal details. Your age, sex and doctor information and critical for the item search and report generation, so critical that the app wouldn’t work if these fields were empty.
+        </p>
+        <p>The application takes input in the form of “the name of the food item and quantity” consumed by the user either via manual text entry or by voice. The food item is checked with a centralized nutrition database over the Internet that has calorific values for a large number of food items as well as nutritional values of each food item.</p>
+        <p>. It then calculates your Body Mass Index (BMI) and Basal Metabolic Rate (BMR) factoring your activity level. A report is then provided and you are advised based on a three level classification of what you have consumed. It is expected that you eat three times a day and the sum total of what you eat is your BMR in other to maintain your body weight. This is the bases for the ideal calorie intake, the advice provide or action taken by the app.</p>
         <div class="button-group button-group-vertical">
             <a data-role="button" data-rel="external" href="mailto:kenoyelive@live.com">Contact developer</a>
-
             <a data-role="button" data-rel="external" href="#" onclick="app.aboutView.aboutViewModel.openLink('https://twitter.com/kenomobilebloke');">Follow on Twitter</a>
         </div>
     </div>

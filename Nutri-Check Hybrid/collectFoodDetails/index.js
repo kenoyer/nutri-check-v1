@@ -13,11 +13,6 @@ app.search = function (query) {
 
     var url = 'https://api.nutritionix.com/v1_1/search/' + query + '?results=0%3A5&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=63bf4be1&appKey=0a46e4d09a00eeb6d90909be80d96efa';
 
-
-    //var url = "https://api.nutritionix.com/v1_1/search/burger?results=0%3A5&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=63bf4be1&appKey=0a46e4d09a00eeb6d90909be80d96efa";
-    //var url = "https://api.nutritionix.com/v1_1/search/";
-
-
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             myFunction(xmlhttp.responseText);
@@ -27,8 +22,6 @@ app.search = function (query) {
 
 
     xmlhttp.open("GET", url, true);
-    //xmlhttp.setRequestHeader("Content-type", "application/json");
-    //xmlhttp.send('{"appId":"63bf4be1", "appKey":"0a46e4d09a00eeb6d90909be80d96efa", "query":"burger"}');
     xmlhttp.send();
 
     function myFunction(response) {
@@ -43,7 +36,6 @@ app.search = function (query) {
 
         out += "</table>";
 
-        //document.getElementById("id01").innerHTML = out;
         app.getItem(arr.hits[0]._id);
     }
 
@@ -77,7 +69,6 @@ function myFunction2(response) {
     calo = arr2.nf_calories;
     var out = "<li><label>You consumed " + foodName + " containing " + calo + " Calories</label></li>";
     document.getElementById("cal").innerHTML = out;
-    //recomendation(calo);
 }
 
 var bmi = '';
@@ -87,13 +78,10 @@ function getBMI(height, weight) {
     var hm2 = Math.pow(h, 2);
     bmi = weight / hm2;
     bmi = bmi.toFixed(1);
-    var out = "<li><label>Your Body Mass Index (BMI) is " + bmi + "</label></li>";
-    document.getElementById("report").innerHTML = out;
+    //var out = "<li><label>Your Body Mass Index (BMI) is " + bmi + "</label></li>";
+    //document.getElementById("report").innerHTML = out;
 }
 
-function recomendation(calo) {
-    console.log(calo + " | " + bmi);
-}
 
 (function (parent) {
     var collectFoodDetailsModel = kendo.observable({
@@ -111,7 +99,7 @@ function recomendation(calo) {
             var exerciseLevel = document.getElementById("exerciseLevel").value;
             getBMI(height, weight);
             app.search(query);
-            app.get_report (weight, height, exerciseLevel, calo, foodName);
+            app.get_report(weight, height, exerciseLevel, calo);
 
         },
         cancel: function () {}

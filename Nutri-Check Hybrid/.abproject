@@ -3,9 +3,9 @@
   "ProjectGuid": "f081d63b-a45e-4ac0-9e31-f9c5b4f7d57e",
   "projectVersion": 1,
   "AppIdentifier": "com.kenoye.NutriCheckHybrid",
-  "DisplayName": "Nutri-Check Hybrid",
+  "DisplayName": "NutriCheck",
   "Author": "Kenoye R",
-  "Description": "Nutri-Check Hybrid",
+  "Description": "NutriCheck is a Hybrid Mobile App that provides nutritional detail and advice based on food item calorie and other personal details.",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
@@ -26,7 +26,7 @@
     "Portrait",
     "Landscape"
   ],
-  "AndroidHardwareAcceleration": "false",
+  "AndroidHardwareAcceleration": "True",
   "iOSStatusBarStyle": "Default",
   "Framework": "Cordova",
   "WP8TileTitle": "",

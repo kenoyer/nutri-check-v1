@@ -1,7 +1,19 @@
-<div data-role="view" data-title="Home" data-layout="main" data-model="app.home" data-show="app.home.onShow">
-
-<h1>Nutri-Check</h1>
-    <input id="numberTxt" placeholder="Enter mobile number" value="" type="tel" />
-<textarea id="messageTxt" placeholder="Enter message"></textarea>
-<input type="button" onclick="app.sendSms()" value="Send SMS" />
+<div id="home-body" data-role="view" data-title="" data-layout="main" data-model="app.home" data-show="app.home.onShow">
+    <div class="home-view" data-bind="invisible:error">
+        <div class="icon-group">
+            <div class="homedetails">
+                <h2>Welcome to NutriCheck</h2>
+                
+            </div>
+        </div>
+        <p>
+            NutriCheck is a very simple app to use but has certain requirements in other for the report to be generated.
+        </p>
+        <p>Once you have entered your personal details, enter a food item and other details to get a calorific and nutritional report.</p>
+        <div class="button-group button-group-vertical">
+            <a data-role="button" href="addDetails/view.html">Start Here!</a>
+        </div>
+        <a data-role="button" data-rel="external" href="#" onclick="app.aboutView.aboutViewModel.openLink('https://nutritionix.com/api');">
+        <div class="attribution" ></div></a>
+    </div>
 </div>
